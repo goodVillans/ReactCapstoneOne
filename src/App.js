@@ -7,6 +7,7 @@ import Figure from './components/Figure';
 import Notification from './components/Notification';
 import PopUp from './components/PopUp';
 import { showNotification as show } from './helperFunctions';
+import AboutModal from './components/AboutModal';
 
 const words = [
   "javascript",
@@ -38,6 +39,12 @@ function App() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+      // info modal methods
+      const toggleModal = () => {
+        setShowModal(!showModal)
+      }
 
   useEffect(() => {
     const handleKeydown = e => {
@@ -79,6 +86,16 @@ function App() {
   return (
     <div className='App'>
       <Header/>
+      <button onClick={toggleModal}>How To Play</button>
+      {showModal && (
+        <AboutModal 
+          header='How to Play Hangman'
+          body='Hangman is a game where the player must guess a word or phrase selected by the app by guessing one letter at a time. For each incorrect guess, the app adds a body part to a hangman diagram. 
+          If the word is guessed correctly, the player wins. 
+          A pop-up shows the result and allows the player to play again.'
+          onClose={toggleModal}
+        />
+      )}
       <div className='game-container'>
         <Figure wrongLetters= {wrongLetters} />
         <WrongLetters wrongLetters= {wrongLetters} />

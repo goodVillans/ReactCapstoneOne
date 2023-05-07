@@ -1,5 +1,5 @@
 import React from 'react'
-
+// import svgs of body-types to build the hangman image
 function Figure({wrongLetters}) {
    
    const errors = wrongLetters.length;
