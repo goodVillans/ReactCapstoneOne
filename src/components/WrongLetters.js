@@ -4,7 +4,7 @@ function WrongLetters({ wrongLetters }) {
   return (
     <div>
       <div className='wrong-letters-contianer'>
-        <div id='wrong-letters'>sa
+        <div id='wrong-letters'>
           {wrongLetters.length > 0 && <p>wrong letters</p>}
           {wrongLetters
             .map((letter, index) => <span key={index}>{letter}</span>)
